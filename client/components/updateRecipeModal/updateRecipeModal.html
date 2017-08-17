@@ -1,0 +1,76 @@
+<div class="modal-content">
+  <form id="updateRecipe" name="updateRecipe" role="form" class="form-horizontal">
+    <div class="modal-header">
+      <button type="button" ng-click="updateRecipeController.cancel()" class="close"><span
+        aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+      <h4 id="myModalLabel" class="modal-title">create Recipe</h4>
+    </div>
+    <div class="modal-body">
+       <div role="alert" ng-show="updateRecipeController.formError" class="alert alert-danger">{{ updateRecipeController.formError }}</div>
+       <div role="alert" ng-show="updateRecipeController.formInfo" class="alert alert-info">{{ updateRecipeController.formInfo }}</div>
+      <div class="form-group">
+         <label for="user name" class="col-xs-3 col-sm-3 control-label">name	</label>
+         <div class="col-xs-9 col-sm-9">
+            <input id="name" name="name" type="text"  ng-model="updateRecipeController.recipe.name" class="form-control" required/>
+         </div>
+      </div>
+	    <div class="form-group">
+         <label for="description" class="col-xs-3 col-sm-3 control-label">description	</label>
+         <div class="col-xs-9 col-sm-9">
+            <input id="description" name="description" type="text"  ng-model="updateRecipeController.recipe.description" class="form-control" required/>
+         </div>
+	    </div>
+      <div class="form-group">
+         <label for="image" class="col-xs-3 col-sm-3 control-label">image	</label>
+         <div class="col-xs-9 col-sm-9">
+            <input id="image" name="image" type="text" ng-model="updateRecipeController.recipe.image" class="form-control" required/>
+         </div>
+      </div>
+	  <div class="form-group">
+         <label for="prepTime" class="col-xs-3 col-sm-3 control-label">prepTime	</label>
+         <div class="col-xs-9 col-sm-9">
+            <input id="prepTime" name="prepTime" type="number" ng-model="updateRecipeController.recipe.prepTime" class="form-control" required/>
+         </div>
+      </div>
+	  <div class="form-group">
+         <label for="cookTime" class="col-xs-3 col-sm-3 control-label">cookTime	</label>
+         <div class="col-xs-9 col-sm-9">
+            <input id="cookTime" name="cookTime" type="number" ng-model="updateRecipeController.recipe.cookTime" class="form-control" required/>
+         </div>
+      </div>
+	  <div class="form-group" >
+         <label for="directions" class="col-xs-3 col-sm-3 control-label">directions	</label>
+		 <button class="btn btn-primary mt12" ng-click="updateRecipeController.addDirection()">Add a new direction</button>
+      </div>
+      <div class="form-group" ng-repeat="o in updateRecipeController.directions">
+         <label for="directions" class="col-xs-3 col-sm-3 control-label"> 	</label>
+         <div class="col-xs-7 col-sm-7">
+            <input name="directions" type="text" ng-model="o.content" class="form-control" required/>
+         </div>
+		 <div class="col-xs-2 col-sm-2">
+			<button class="btn btn-primary glyphicon glyphicon-trash" ng-click="updateRecipeController.removeDirection($index)"></button>
+         </div>
+      </div>
+      <div class="form-group" >
+         <label for="ingredients" class="col-xs-3 col-sm-3 control-label">ingredients	</label>
+		 <button class="btn btn-primary mt12" ng-click="updateRecipeController.addIngredient()">Add a new ingredient</button>
+      </div>
+      <div class="form-group" ng-repeat="o in updateRecipeController.recipe.ingredients">
+         <label for="ingredients" class="col-xs-3 col-sm-3 control-label"> 	</label>
+         <div class="col-xs-5 col-sm-5">
+            <input name="ingredientsn" type="text" ng-model="o.name" class="form-control" required/>
+         </div>
+		 <div class="col-xs-2 col-sm-2">
+            <input name="ingredientsa" type="number" ng-model="o.amount" class="form-control" required/>
+         </div>
+		 <div class="col-xs-2 col-sm-2">
+			<button class="btn btn-primary glyphicon glyphicon-trash" ng-click="updateRecipeController.removeIngredient($index)"></button>
+         </div>
+      </div>
+      <div class="modal-footer">
+        <button ng-click="updateRecipeController.cancel()" type="button" class="btn btndefault">Cancel</button>
+        <button type="submit" class="btn btn-primary" ng-click="updateRecipeController.submitForm()">create User</button>
+      </div>
+   </div>
+  </form>
+</div>

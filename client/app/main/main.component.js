@@ -35,12 +35,15 @@ export class MainController {
           console.log(this.users);
           console.log(response);
           this.users.splice(index,1);
+		  this.formInfo = 'User delete successfully!';
+		  
           console.log(this.users);
         }
 
       )
       .catch(error => {
         console.error(error);
+		this.formError = err.toString();
       });
   }
   updateUser(user) {
@@ -63,7 +66,7 @@ export class MainController {
       }
     });
   }
-
+	
    $onInit() {
 
    }

@@ -3,7 +3,8 @@
 export function routeConfig($routeProvider, $locationProvider) {
   'ngInject';
 
-  $routeProvider.otherwise({
+  $routeProvider
+  .otherwise({
     redirectTo: '/'
   });
 
