@@ -1,20 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Lab 15: Bootstrap CSS</h1>
-      <input ng-model="recipedivController.input" />
-      <h1>You entered: {{ recipedivController.input }}</h1>
-      <hr size="5">
-      <ul>
-        <li ng-repeat="value in recipedivController.values">{{ value }}</li>
-      </ul>
-      <hr size="5">
-      <h1>{{ recipedivController.valueToSquare }} * {{ recipedivController.valueToSquare }} = {{recipedivController.valueToSquare | Square }}</h1>
-      <hr size="5">
-       <hr>
-       <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Toggle collapse Vertically</button>
-       <hr>
-       <div class="well well-lg"><h3>Users Manager Panel</h3></div>
+       <h1 class="page-header">Lab 15: Bootstrap CSS</h1>
+       <a class="btn btn-default" ng-click="recipedivController.showuser()" >Users</a>
+       <a class="btn btn-default" ng-click="recipedivController.showre()">Recipes & review</a>
+       <div class="well well-lg"><h3>Recipes Manager Panel</h3></div>
        <div role="alert" ng-show="recipedivController.formError" id="errorinfo" class="alert alert-danger alert-dismissable">{{ recipedivController.formError }}</div>
 	   <div role="alert" ng-show="recipedivController.formInfo" id = "successinfo" class="alert alert-success alert-dismissable">{{ recipedivController.formInfo }}</div>
 		
@@ -35,8 +25,8 @@
 			  <td>{{recipe.name}}</td>
 			  <td>
 				<button ng-click="recipedivController.viewDetail(recipe)" type="button" class="btn btn-default">ViewDetail</button>
-        <button ng-click="recipedivController.updateRecipe(recipe)" type="button" class="btn btn-default">Update</button>
-        <button ng-click="recipedivController.review(recipe,$index)" type="button" class="btn btn-default">ReviewDetail</button>
+                <button ng-click="recipedivController.updateRecipe(recipe)" type="button" class="btn btn-default">Update</button>
+                <button ng-click="recipedivController.viewReviewDetail(recipe)" type="button" class="btn btn-default">ReviewDetail</button>
 				<button ng-click="recipedivController.deleteRecipe(recipe,$index)" type="button" class="btn btn-default">Delete</button>
 			  </td>
 			</tr>
@@ -44,37 +34,7 @@
 		  </table>
 		</div>
 	   </div>
-       <div class="well well-lg"><h3>Recipe Manager Panel</h3></div>
-	    <div class="tab-pane fade in active" id="home">
-		<div class="table-responsive">
-		   <table class="table table-bordered table-responsive table-striped">
-			<thead>
-			<button ng-click="recipedivController.createUser(user)" type="button" class="btn btn-default"> create user</button>
-			<tr>
-			  <th >Id</th>
-			  <th>Username</th>
-			  <th >Email</th>
-			  <th>First Name</th>
-			  <th>Last Name</th>
-			  <th>Option</th>
-			</tr>
-			</thead>
-			<tbody>
-			<tr ng-repeat="user in recipedivController.users">
-			  <td>{{user._id}}</td>
-			  <td>{{user.username}}</td>
-			  <td>{{user.email}}</td>
-			  <td>{{user.name.firstName}}</td>
-			  <td>{{user.name.lastName}}</td>
-			  <td>
-				<button ng-click="recipedivController.updateUser(user)" type="button" class="btn btn-default">Update</button>
-				<button ng-click="recipedivController.deleteUser(user,$index)" type="button" class="btn btn-default">Delete</button>
-			  </td>
-			</tr>
-			</tbody>
-		  </table>
-		</div>
-	   </div>
+       
 <script>
 	$("#successinfo").fadeOut(10000);
 	$("#errorinfo").fadeOut(10000);

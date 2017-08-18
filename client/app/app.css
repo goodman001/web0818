@@ -43,6 +43,7 @@
 
 /* Component styles are injected through gulp */
 /* inject:css */
+@import 'index/main.css';
 @import 'main/main.css';
 @import 'recipediv/main.css';
 /* endinject */

@@ -6,8 +6,8 @@ export function RecipeService($resource) {
     getAllRecipes() {
       return $resource('/api/recipes/').query().$promise;
     },
-    getUserById(userId) {
-      return $resource('/api/users/:id').get({id: userId}).$promise;
+    getRecipeById(recipeId) {
+      return $resource('/api/recipes/:id').get({id: recipeId}).$promise;
     },
     updateRecipe(recipe) {
       let updateResource = $resource('/api/recipes/:id', null,
@@ -23,12 +23,19 @@ export function RecipeService($resource) {
         });
       return createResource.create(recipe).$promise;
     },
-    deleteUser(user) {
-      let deleteResource = $resource('/api/users/:id', null,
+	createReview(recipe,review) {
+      let createResource = $resource('/api/recipes/:recipeId/reviews', null,
+        {
+          create: { method: 'POST' }
+        });
+      return createResource.create({recipeId:recipe._id},review).$promise;
+    },
+    deleteRecipe(recipe) {
+      let deleteResource = $resource('/api/recipes/:id', null,
         {
           delete: { method: 'DELETE' }
         });
-      return deleteResource.delete({ id: user._id },user).$promise;
+      return deleteResource.delete({ id: recipe._id },recipe).$promise;
     }
   };
   return Recipe;

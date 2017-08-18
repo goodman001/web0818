@@ -13,7 +13,12 @@ export class RecipedivController {
     this.setData();
     this.getUserData();
   }
-
+  showuser(){
+    window.location = "/users";
+  }
+  showre(){
+    window.location = "/recipes";
+  }
   setData() {
     this.values = ['first', 'second', 'third'];
     this.valueToSquare = 4;
@@ -29,16 +34,16 @@ export class RecipedivController {
         console.error(error);
       });
   }
-  deleteUser(user,index) {
-    this.Recipe.deleteUser(user)
+  deleteRecipe(recipe,index) {
+    this.Recipe.deleteRecipe(recipe)
       .then(response => {
           console.log(index);
-          console.log(this.users);
+          console.log(this.recipes);
           console.log(response);
-          this.users.splice(index,1);
-		  this.formInfo = 'User delete successfully!';
+          this.recipes.splice(index,1);
+		  this.formInfo = 'recipe delete successfully!';
 		  
-          console.log(this.users);
+          console.log(this.recipes);
         }
 
       )
@@ -71,6 +76,16 @@ export class RecipedivController {
     this.$uibModal.open({
       template: require('../../components/createRecipeModal/createRecipeModal.html'),
       controller: 'createRecipeController as createRecipeController',
+      resolve: {
+        recipe: () => recipe
+      }
+    });
+  }
+  viewReviewDetail(recipe){
+    console.log("view detail");
+    this.$uibModal.open({
+      template: require('../../components/viewReviewModal/viewReviewModal.html'),
+      controller: 'viewReviewController as viewReviewController',
       resolve: {
         recipe: () => recipe
       }

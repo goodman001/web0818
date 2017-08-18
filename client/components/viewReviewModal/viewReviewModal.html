@@ -1,0 +1,79 @@
+<div class="modal-content">
+  <form id="createRecipe" name="createRecipe" role="form" class="form-horizontal">
+    <div class="modal-header">
+      <button type="button" ng-click="viewReviewController.cancel()" class="close"><span
+        aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+      
+    </div>
+	
+    <div class="modal-body">
+	   <h4 id="myModalLabel" class="modal-title">create Recipe</h4>
+       <div role="alert" ng-show="viewReviewController.formError" class="alert alert-danger">{{ viewReviewController.formError }}</div>
+       <div role="alert" ng-show="viewReviewController.formInfo" class="alert alert-info">{{ viewReviewController.formInfo }}</div>
+	    <div class="form-group">
+         <label for="description" class="col-xs-3 col-sm-3 control-label">description	</label>
+         <div class="col-xs-9 col-sm-9">
+            <input id="description" name="description" type="text"  ng-model="viewReviewController.review.description" class="form-control" required/>
+         </div>
+	    </div>
+	  <div class="form-group">
+         <label for="rating" class="col-xs-3 col-sm-3 control-label">Rating	</label>
+         <div class="col-xs-9 col-sm-9">
+            <input id="rating" name="rating" type="number" ng-model="viewReviewController.review.rating" class="form-control" required/>
+         </div>
+      </div>
+	  <div class="form-group">
+         <label for="createDate" class="col-xs-3 col-sm-3 control-label">createDate	</label>
+         <div class="col-xs-9 col-sm-9">
+            <input id="createDate" name="createDate" type="date" ng-model="viewReviewController.review.createDate" class="form-control" required/>
+         </div>
+      </div>
+	  <div class="form-group" >
+         <label for="directions" class="col-xs-3 col-sm-3 control-label">select	</label>
+		 <div class="col-sm-9">
+			 <select ng-model="viewReviewController.userid">
+				 <option value="{{user._id}}" ng-repeat="user in viewReviewController.users">{{user.username}}</option>
+			 </select>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" ng-click="viewReviewController.createForm()">create Review</button>
+      </div>
+      <h4 id="myModalLabel2" class="modal-title">Reivew list</h4>
+	  <div ng-repeat="review in viewReviewController.recipe.reviews">
+		  
+		  <div class="form-group">
+			 <label for="description" class="col-xs-3 col-sm-3 control-label">description	</label>
+			 <div class="col-xs-9 col-sm-9">
+				<input id="description" name="description" type="text"  ng-model="review.description" class="form-control" required/>
+			 </div>
+			</div>
+		  <div class="form-group">
+			 <label for="rating" class="col-xs-3 col-sm-3 control-label">Rating	</label>
+			 <div class="col-xs-9 col-sm-9">
+				<input id="rating" name="rating" type="number" ng-model="review.rating" class="form-control" required/>
+			 </div>
+		  </div>
+		  <div class="form-group">
+			 <label for="createDate" class="col-xs-3 col-sm-3 control-label">createDate	</label>
+			 <div class="col-xs-9 col-sm-9">
+				<input id="createDate" name="createDate" type="text" ng-model="review.createDate" class="form-control" readonly/>
+			 </div>
+		  </div>
+		  <div class="form-group" >
+			 <label for="directions" class="col-xs-3 col-sm-3 control-label">User	</label>
+			 <div class="col-xs-9 col-sm-9">
+				<input id="createDate" name="createDate" type="text" ng-model="review.user" class="form-control" readonly/>
+			 </div>
+		  </div>
+		  <button type="btn" class="btn btn-primary" ng-click="viewReviewController.deleteReivew($index)">Delete</button>
+		   <hr>
+		  
+	  </div>
+	  <hr>
+	  <div class="modal-footer">
+		<button type="submit" class="btn btn-primary" ng-click="viewReviewController.updateForm()">Update Review</button>
+	  </div>
+   </div>
+  </form>
+</div>

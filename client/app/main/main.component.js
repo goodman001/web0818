@@ -18,7 +18,12 @@ export class MainController {
     this.values = ['first', 'second', 'third'];
     this.valueToSquare = 4;
   }
-
+  showuser(){
+    window.location = "/users";
+  }
+  showre(){
+    window.location = "/recipes";
+  }
   getUserData() {
     this.User.getAllUsers()
       .then(response => {

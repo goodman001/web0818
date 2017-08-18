@@ -15,6 +15,7 @@ import {
 } from './app.config';
 
 import main from './main/main.component';
+import index from './index/index.component';
 import recipediv from './recipediv/recipediv.component';
 import about from './about/about.component';
 import userDetail from './userDetail/userDetail.component';
@@ -27,10 +28,13 @@ import createUserModal from '../components/createUserModal/createUserModal.contr
 import createRecipeModal from '../components/createRecipeModal/createRecipeModal.controller';
 import viewRecipeModal from '../components/viewRecipeModal/viewRecipeModal.controller';
 import updateRecipeModal from '../components/updateRecipeModal/updateRecipeModal.controller';
+import viewReviewModal from '../components/viewReviewModal/viewReviewModal.controller';
+
+
 import './app.css';
 
-angular.module('comp3705App', [ngCookies, ngResource, ngSanitize, ngRoute, uiBootstrap,
-                               main,recipediv, constants, util, userDetail, about, user, updateUserModal,createUserModal,createRecipeModal,viewRecipeModal,updateRecipeModal, uiBootstrap])
+angular.module('comp3705App', [ngCookies, ngResource, ngSanitize, ngRoute, uiBootstrap,index,
+                               main,recipediv, constants, util, userDetail, about, user, updateUserModal,createUserModal,createRecipeModal,viewRecipeModal,updateRecipeModal,viewReviewModal, uiBootstrap])
   .config(routeConfig);
 
 angular.element(document)
